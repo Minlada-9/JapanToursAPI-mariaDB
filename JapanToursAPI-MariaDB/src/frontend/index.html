@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Japan Tours Demo</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, sans-serif;
+      text-align: center;
+      margin: 30px;
+      background: #f9fafb;
+    }
+
+    h1 { font-size: 26px; color: #222; }
+    h3 { margin-top: 25px; color: #444; }
+
+    form {
+      background: #fff;
+      border: 1px solid #ccc;
+      display: inline-block;
+      text-align: left;
+      padding: 25px;
+      border-radius: 10px;
+      width: 420px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    label { display: block; margin-top: 10px; font-weight: 500; }
+    input, select, textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      box-sizing: border-box;
+      border-radius: 5px;
+      border: 1px solid #aaa;
+    }
+    textarea { resize: vertical; }
+
+    button {
+      margin-top: 15px;
+      width: 48%;
+      padding: 8px;
+      cursor: pointer;
+      border: none;
+      border-radius: 6px;
+      background: #2563eb;
+      color: white;
+      font-weight: 600;
+    }
+    button:hover { background: #1d4ed8; }
+    button[type="reset"] { background: #ef4444; }
+
+    hr { margin: 30px 0; }
+
+    .tour-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 25px;
+    }
+    .tour-item {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      overflow: hidden;
+      width: 260px;
+      text-align: left;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: 0.2s;
+    }
+    .tour-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 12px rgba(0,0,0,0.15);
+    }
+    .tour-item img { width: 100%; height: 160px; object-fit: cover; }
+    .tour-item .info { padding: 12px; }
+    .tour-item h4 { margin: 0; font-size: 18px; color: #222; }
+    .tour-item p { margin: 6px 0; font-size: 14px; color: #555; }
+    .tour-item span { display: block; margin-top: 5px; font-weight: bold; color: #1d4ed8; }
+
+    .booking-list {
+      background: #fff;
+      border: 1px solid #ddd;
+      display: inline-block;
+      padding: 15px 25px;
+      border-radius: 8px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <h1>Japan Tours Demo</h1>
+  <h3>จองทัวร์ / แก้ไขการจอง</h3>
+
+  <form id="bookingForm">
+    <label>เลือกทัวร์:</label>
+    <select id="tourSelect" required>
+      <option value="">-- กรุณาเลือกทัวร์ --</option>
+      <option value="">ทัวร์ฟูจิ</option>
+      <option value="">ทัวร์โตเกียว</option>
+      <option value="">ทัวร์โอซาก้า</option>
+    </select>
+
+    <label>ชื่อผู้จอง:</label>
+    <input type="text" id="name" required />
+
+    <label>อีเมล:</label>
+    <input type="email" id="email" required />
+
+    <label>โทรศัพท์:</label>
+    <input type="text" id="phone" required />
+
+    <label>จำนวนคน:</label>
+    <input type="number" id="people" min="1" value="1" required />
+
+    <label>วันที่จอง:</label>
+    <input type="date" id="date" required />
+
+    <label>หมายเหตุ:</label>
+    <textarea id="note" rows="3"></textarea>
+
+    <div style="display:flex; justify-content:space-between;">
+      <button type="submit">ส่งการจอง</button>
+      <button type="reset">ยกเลิก</button>
+    </div>
+  </form>
+
+  <h3>รายการการจอง</h3>
+  <div id="bookingList" class="booking-list">ยังไม่มีการจอง</div>
+
+  <h3>รายการทัวร์</h3>
+  <div id="tourList" class="tour-list">
+    <!-- ข้อมูลทัวร์ static (fallback) -->
+    <div class="tour-item">
+      <img src="./1.jpg" alt="ทัวร์โตเกียว">
+      <div class="info">
+        <h4>ทัวร์โตเกียว</h4>
+        <p>ชมเมืองโตเกียวสุดทันสมัย</p>
+        <span>10,000 บาท / 3 วัน 2 คืน</span>
+      </div>
+    </div>
+    <div class="tour-item">
+      <img src="./2.png" alt="ทัวร์ฟูจิ">
+      <div class="info">
+        <h4>ทัวร์ฟูจิ</h4>
+        <p>ชมภูเขาไฟฟูจิแบบใกล้ชิด</p>
+        <span>12,000 บาท / 2 วัน 1 คืน</span>
+      </div>
+    </div>
+    <div class="tour-item">
+      <img src="./3.jpg" alt="ทัวร์โอซาก้า">
+      <div class="info">
+        <h4>ทัวร์โอซาก้า</h4>
+        <p>ตะลุยตลาดและสวนสนุกในโอซาก้า</p>
+        <span>15,000 บาท / 3 วัน 2 คืน</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const bookingList = document.getElementById("bookingList");
+    const form = document.getElementById("bookingForm");
+    const tourSelect = document.getElementById("tourSelect");
+    const tourListDiv = document.getElementById("tourList");
+
+    // ดึงรายการทัวร์จาก API
+    async function loadTours() {
+      try {
+        const res = await fetch("http://localhost:3000/api/tours");
+        const tours = await res.json();
+
+        if (tours.length > 0) {
+          // เติม select
+          tourSelect.innerHTML = '<option value="">-- กรุณาเลือกทัวร์ --</option>';
+          tours.forEach(t => {
+            const opt = document.createElement("option");
+            opt.value = t._id;
+            opt.textContent = t.title;
+            tourSelect.appendChild(opt);
+          });
+
+          // แสดงรายการทัวร์ด้านล่าง
+          tourListDiv.innerHTML = tours.map(t => `
+            <div class="tour-item">
+              <img src="${t.image || './1.jpg'}" alt="${t.title}">
+              <div class="info">
+                <h4>${t.title}</h4>
+                <p>${t.description || ''}</p>
+                <span>${t.price} บาท${t.seats != null ? ` / เหลือ ${t.seats} ที่นั่ง` : ''}</span>
+              </div>
+            </div>
+          `).join("");
+        }
+      } catch (err) {
+        console.log("ไม่สามารถโหลดทัวร์จาก API ได้, แสดงข้อมูล static แทน");
+      }
+    }
+
+    // ดึงรายการการจอง
+    async function loadBookings() {
+      try {
+        const res = await fetch("http://localhost:3000/api/bookings");
+        const bookings = await res.json();
+
+        if (bookings.length === 0) {
+          bookingList.textContent = "ยังไม่มีการจอง";
+          return;
+        }
+
+        bookingList.innerHTML = bookings.map(b => `
+          <div>
+            <strong>${b.name}</strong> (${b.email})<br>
+            จองทัวร์: ${b.tour ? b.tour.title : "-"}<br>
+            จำนวน: ${b.qty} คน — วันที่ ${b.dateBooked ? b.dateBooked.split("T")[0] : "-"}<br>
+            โทร: ${b.phone}<br>
+            หมายเหตุ: ${b.note || "-"}<hr>
+          </div>
+        `).join("");
+      } catch(err) {
+        console.log("ไม่สามารถโหลดรายการจองได้");
+      }
+    }
+
+    form.addEventListener("submit", async e => {
+      e.preventDefault();
+
+      const data = {
+        tour: tourSelect.value,
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        phone: document.getElementById("phone").value,
+        qty: Number(document.getElementById("people").value),
+        dateBooked: document.getElementById("date").value,
+        note: document.getElementById("note").value
+      };
+
+      try {
+        await fetch("http://localhost:3000/api/bookings", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data)
+        });
+      } catch(err) {
+        console.log("ส่งการจองไม่สำเร็จ:", err);
+      }
+
+      form.reset();
+      loadBookings();
+    });
+
+    loadTours();
+    loadBookings();
+  </script>
+</body>
+</html>

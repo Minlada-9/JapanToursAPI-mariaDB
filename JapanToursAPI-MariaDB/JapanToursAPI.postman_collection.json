@@ -1,0 +1,273 @@
+{
+  "info": {
+    "name": "Japan Tours API",
+    "description": "Collection for testing the Japan Tours Express + MongoDB API. Create/Update/Delete are auto-linked to the last created/fetched id, so you can run requests in any order.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:3000" },
+    { "key": "tourId", "value": "" },
+    { "key": "bookingId", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/health"
+      }
+    },
+    {
+      "name": "Tours",
+      "item": [
+        {
+          "name": "Get All Tours",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "  const json = pm.response.json();",
+                  "  if (Array.isArray(json) && json.length > 0) {",
+                  "    pm.collectionVariables.set('tourId', json[0]._id);",
+                  "  }",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/tours"
+          }
+        },
+        {
+          "name": "Create Tour",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status is 201', function () {",
+                  "  pm.response.to.have.status(201);",
+                  "});",
+                  "if (pm.response.code === 201) {",
+                  "  const json = pm.response.json();",
+                  "  pm.collectionVariables.set('tourId', json._id);",
+                  "  console.log('Saved tourId =', json._id);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"ทัวร์ฮอกไกโด\",\n  \"description\": \"ชมหิมะฤดูหนาว\",\n  \"price\": 20000,\n  \"seats\": 15,\n  \"date\": \"2026-12-20\",\n  \"image\": \"\"\n}"
+            },
+            "url": "{{baseUrl}}/api/tours"
+          }
+        },
+        {
+          "name": "Get Tour By Id",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/tours/{{tourId}}"
+          }
+        },
+        {
+          "name": "Update Tour",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  "if (!pm.collectionVariables.get('tourId')) {",
+                  "  console.warn('tourId is empty — run \"Create Tour\" or \"Get All Tours\" first.');",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"price\": 18500,\n  \"seats\": 12\n}"
+            },
+            "url": "{{baseUrl}}/api/tours/{{tourId}}"
+          }
+        },
+        {
+          "name": "Delete Tour",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  "if (!pm.collectionVariables.get('tourId')) {",
+                  "  console.warn('tourId is empty — run \"Create Tour\" or \"Get All Tours\" first.');",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status is 200', function () {",
+                  "  pm.response.to.have.status(200);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "  pm.collectionVariables.set('tourId', '');",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/tours/{{tourId}}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Bookings",
+      "item": [
+        {
+          "name": "Get All Bookings",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "  const json = pm.response.json();",
+                  "  if (Array.isArray(json) && json.length > 0) {",
+                  "    pm.collectionVariables.set('bookingId', json[0]._id);",
+                  "  }",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/bookings"
+          }
+        },
+        {
+          "name": "Create Booking",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  "if (!pm.collectionVariables.get('tourId')) {",
+                  "  console.warn('tourId is empty — run Tours > \"Create Tour\" first so this booking references a real tour.');",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status is 201', function () {",
+                  "  pm.response.to.have.status(201);",
+                  "});",
+                  "if (pm.response.code === 201) {",
+                  "  const json = pm.response.json();",
+                  "  pm.collectionVariables.set('bookingId', json._id);",
+                  "  console.log('Saved bookingId =', json._id);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tour\": \"{{tourId}}\",\n  \"name\": \"สมชาย ใจดี\",\n  \"email\": \"somchai@example.com\",\n  \"phone\": \"0812345678\",\n  \"qty\": 2,\n  \"note\": \"ทดสอบจอง\"\n}"
+            },
+            "url": "{{baseUrl}}/api/bookings"
+          }
+        },
+        {
+          "name": "Update Booking",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  "if (!pm.collectionVariables.get('bookingId')) {",
+                  "  console.warn('bookingId is empty — run \"Create Booking\" or \"Get All Bookings\" first.');",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"qty\": 3,\n  \"note\": \"แก้ไขจำนวนคน\"\n}"
+            },
+            "url": "{{baseUrl}}/api/bookings/{{bookingId}}"
+          }
+        },
+        {
+          "name": "Delete Booking",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  "if (!pm.collectionVariables.get('bookingId')) {",
+                  "  console.warn('bookingId is empty — run \"Create Booking\" or \"Get All Bookings\" first.');",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status is 200', function () {",
+                  "  pm.response.to.have.status(200);",
+                  "});",
+                  "if (pm.response.code === 200) {",
+                  "  pm.collectionVariables.set('bookingId', '');",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/bookings/{{bookingId}}"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Japan Tours | ทัวร์ญี่ปุ่น จองง่าย เดินทางจริง</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue:#2F6FED;
+    --blue-deep:#1B4FC4;
+    --blue-ink:#0E1B33;
+    --sky:#EAF2FE;
+    --sky-soft:#F5F9FF;
+    --paper:#FFFFFF;
+    --ink:#12141A;
+    --ink-soft:#6B7280;
+    --line:#E7ECF5;
+    --coral:#FF7A59;
+    --radius-lg:32px;
+    --radius-md:20px;
+    --radius-sm:12px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Noto Sans Thai', sans-serif;
+    line-height:1.6;
+  }
+  h1,h2,h3,h4{
+    font-family:'Noto Sans Thai', sans-serif;
+    margin:0;
+    color:var(--blue-ink);
+    font-weight:800;
+    letter-spacing:-.01em;
+  }
+  .eyebrow{
+    font-family:'Poppins', sans-serif;
+    font-size:11.5px;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--blue);
+    font-weight:700;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px;}
+
+  /* ---------- NAV ---------- */
+  .nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:22px 24px;max-width:1180px;margin:0 auto;
+  }
+  .logo{
+    display:flex;align-items:center;gap:10px;
+    font-family:'Poppins',sans-serif;font-weight:700;font-size:18px;color:var(--blue-ink);
+    letter-spacing:-.01em;
+  }
+  .logo .mark{
+    width:36px;height:36px;border-radius:50%;
+    background:var(--blue-ink);
+    display:flex;align-items:center;justify-content:center;
+    color:#fff;font-weight:700;font-size:15px;
+  }
+  .nav-links{display:flex;gap:34px;font-weight:600;font-size:14.5px;color:var(--ink-soft);}
+  .nav-links a{transition:color .15s;}
+  .nav-links a:hover{color:var(--blue-ink);}
+  .nav-cta{
+    background:var(--blue-ink);color:#fff;padding:12px 24px;border-radius:999px;
+    font-weight:600;font-size:14px;transition:background .15s;
+  }
+  .nav-cta:hover{background:var(--blue-deep);}
+  @media (max-width:760px){ .nav-links{display:none;} }
+
+  /* ---------- HERO ---------- */
+  .hero-shell{max-width:1180px;margin:6px auto 0;padding:0 24px;}
+  .hero{
+    position:relative;overflow:hidden;
+    background:
+      linear-gradient(100deg, rgba(14,27,51,.82) 0%, rgba(14,27,51,.32) 42%, rgba(14,27,51,.08) 65%),
+      url('https://images.unsplash.com/photo-1756988182660-32f3a4fb3bde?auto=format&fit=crop&w=1600&q=80') center/cover;
+    border-radius:var(--radius-lg);
+    padding:70px 56px 130px;
+    color:#fff;
+    display:grid;grid-template-columns:1.05fr .95fr;gap:20px;align-items:center;
+  }
+  .hero h1{color:#fff;font-size:44px;line-height:1.22;font-weight:800;max-width:520px;}
+  .hero p{color:#DCE6F7;font-size:16px;max-width:420px;margin-top:16px;}
+  .hero-ctas{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap;align-items:center;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:15px 28px;border-radius:999px;font-weight:700;font-size:15px;
+    border:none;cursor:pointer;transition:transform .15s, background .15s;
+  }
+  .btn-primary{background:var(--blue);color:#fff;}
+  .btn-primary:hover{background:var(--blue-deep);transform:translateY(-1px);}
+  .btn-ghost{background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.4);}
+  .btn-ghost:hover{background:rgba(255,255,255,.22);}
+  .play-dot{
+    width:46px;height:46px;border-radius:50%;background:#fff;color:var(--blue-ink);
+    display:flex;align-items:center;justify-content:center;font-size:14px;flex:0 0 auto;
+  }
+
+  .hero-float{
+    position:absolute;right:56px;bottom:-36px;
+    background:#fff;color:var(--ink);border-radius:var(--radius-md);
+    padding:18px 22px;display:flex;gap:16px;align-items:center;
+    box-shadow:0 20px 44px rgba(14,27,51,.22);width:300px;
+  }
+  .hero-float .thumbs{display:flex;flex:0 0 auto;}
+  .hero-float .thumbs img{
+    width:42px;height:42px;border-radius:50%;object-fit:cover;border:3px solid #fff;margin-left:-14px;
+  }
+  .hero-float .thumbs img:first-child{margin-left:0;}
+  .hero-float strong{font-size:14px;display:block;color:var(--blue-ink);}
+  .hero-float span{font-size:12.5px;color:var(--ink-soft);}
+  .hero-know{
+    position:absolute;left:56px;bottom:-30px;
+    background:var(--blue-ink);color:#fff;border-radius:999px;
+    padding:14px 22px;display:flex;align-items:center;gap:10px;font-weight:600;font-size:14px;
+    box-shadow:0 18px 36px rgba(14,27,51,.28);
+  }
+  @media (max-width:900px){
+    .hero{grid-template-columns:1fr;padding:48px 26px 150px;}
+    .hero h1{font-size:32px;max-width:100%;}
+    .hero-float{right:24px;left:24px;width:auto;bottom:-56px;}
+    .hero-know{display:none;}
+  }
+
+  /* trust row */
+  .trust-row{
+    display:flex;justify-content:space-between;align-items:center;gap:30px;flex-wrap:wrap;
+    margin:80px 0 0;padding:26px 0;border-bottom:1px solid var(--line);
+  }
+  @media (max-width:900px){.hero-shell{margin-bottom:20px;} .trust-row{margin-top:96px;justify-content:center;}}
+  .follow{display:flex;align-items:center;gap:12px;font-size:13px;color:var(--ink-soft);font-weight:600;}
+  .follow .dots{display:flex;gap:8px;}
+  .follow .dots span{
+    width:30px;height:30px;border-radius:50%;background:var(--sky);color:var(--blue-ink);
+    display:flex;align-items:center;justify-content:center;font-size:13px;
+  }
+  .partners{display:flex;gap:38px;flex-wrap:wrap;align-items:center;}
+  .partners span{font-family:'Poppins',sans-serif;font-weight:700;font-size:15px;color:#B9C2D4;letter-spacing:-.01em;}
+
+  /* ---------- SECTION HEAD ---------- */
+  .section{padding:70px 0;}
+  .section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:36px;flex-wrap:wrap;}
+  .section-head h2{font-size:30px;font-weight:800;}
+  .section-head p{color:var(--ink-soft);margin-top:8px;max-width:460px;font-size:15px;}
+  .arrow-nav{display:flex;gap:10px;}
+  .arrow-nav button{
+    width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:#fff;
+    display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--blue-ink);font-size:16px;
+  }
+  .arrow-nav button.active{background:var(--blue-ink);border-color:var(--blue-ink);color:#fff;}
+
+  /* ---------- DESTINATION SHOWCASE (static, curated) ---------- */
+  .dest-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  @media (max-width:900px){.dest-grid{grid-template-columns:1fr;}}
+  .dest-card{border-radius:var(--radius-md);overflow:hidden;position:relative;}
+  .dest-media{height:280px;position:relative;overflow:hidden;}
+  .dest-media img{width:100%;height:100%;object-fit:cover;transition:transform .4s;}
+  .dest-card:hover .dest-media img{transform:scale(1.06);}
+  .dest-info{display:flex;justify-content:space-between;align-items:center;padding:16px 4px 0;}
+  .dest-info h4{font-size:18px;font-weight:700;}
+  .dest-info .loc{font-size:13px;color:var(--ink-soft);margin-top:3px;font-weight:500;}
+  .rating-pill{
+    background:var(--blue);color:#fff;font-size:12.5px;font-weight:700;
+    padding:6px 12px;border-radius:999px;display:flex;align-items:center;gap:4px;flex:0 0 auto;
+  }
+
+  /* ---------- TOURS GRID (dynamic, from API) ---------- */
+  .tour-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+  @media (max-width:1100px){.tour-grid{grid-template-columns:repeat(3,1fr);}}
+  @media (max-width:900px){.tour-grid{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:620px){.tour-grid{grid-template-columns:1fr;}}
+
+  .tour-card{
+    background:var(--paper);border-radius:var(--radius-md);overflow:hidden;
+    box-shadow:0 10px 26px rgba(14,27,51,.07);border:1px solid var(--line);
+    transition:transform .2s, box-shadow .2s;display:flex;flex-direction:column;
+  }
+  .tour-card:hover{transform:translateY(-5px);box-shadow:0 18px 36px rgba(14,27,51,.13);}
+  .tour-media{position:relative;height:180px;background:linear-gradient(135deg,var(--sky),var(--blue));}
+  .tour-media img{width:100%;height:100%;object-fit:cover;}
+  .tour-badge{
+    position:absolute;top:12px;right:12px;background:rgba(255,255,255,.95);
+    color:var(--blue-deep);font-size:12.5px;font-weight:700;
+    padding:5px 11px;border-radius:999px;
+  }
+  .tour-body{padding:18px 20px 20px;flex:1;display:flex;flex-direction:column;}
+  .tour-body h4{font-size:18px;font-weight:700;}
+  .tour-body p{font-size:13.5px;color:var(--ink-soft);margin:8px 0 14px;flex:1;}
+  .tour-price{display:flex;justify-content:space-between;align-items:baseline;border-top:1px dashed var(--line);padding-top:12px;}
+  .tour-price .amt{font-family:'Poppins',sans-serif;font-weight:700;color:var(--blue-ink);font-size:17px;}
+  .tour-price .amt small{font-size:12px;font-weight:400;color:var(--ink-soft);}
+  .tour-select-btn{
+    font-size:13px;font-weight:700;color:var(--blue);background:none;border:none;cursor:pointer;padding:0;
+  }
+  .empty-note{color:var(--ink-soft);font-size:14px;padding:20px;text-align:center;background:var(--sky-soft);border-radius:var(--radius-md);border:1px dashed var(--line);}
+
+  /* ---------- STEPS (journey made simple) ---------- */
+  .journey-head{text-align:center;max-width:560px;margin:0 auto 46px;}
+  .journey-head h2{font-size:32px;}
+  .journey-head p{color:var(--ink-soft);margin-top:12px;font-size:15px;}
+  .journey-grid{display:grid;grid-template-columns:1fr .9fr 1fr;gap:0;align-items:stretch;}
+  @media (max-width:900px){.journey-grid{grid-template-columns:1fr;gap:20px;}}
+  .journey-side{
+    background:var(--sky-soft);border-radius:var(--radius-md);padding:30px 26px;
+    display:flex;flex-direction:column;justify-content:center;gap:14px;
+  }
+  .journey-side .ic{
+    width:44px;height:44px;border-radius:50%;background:#fff;color:var(--blue);
+    display:flex;align-items:center;justify-content:center;font-size:18px;
+  }
+  .journey-side h4{font-size:17px;font-weight:700;}
+  .journey-card{
+    background:var(--blue);border-radius:var(--radius-md);color:#fff;padding:32px 28px;
+    margin:0 -16px;position:relative;z-index:2;box-shadow:0 24px 48px rgba(47,111,237,.3);
+  }
+  @media (max-width:900px){.journey-card{margin:0;}}
+  .journey-card .ic{
+    width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.18);
+    display:flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:16px;
+  }
+  .journey-card h4{color:#fff;font-size:20px;margin-bottom:10px;}
+  .journey-card p{font-size:13.5px;color:#E4ECFC;margin-bottom:18px;}
+  .journey-card .learn{font-size:13px;font-weight:700;color:#fff;display:inline-flex;align-items:center;gap:6px;}
+
+  /* ---------- PROMO BANNER ---------- */
+  .promo{display:grid;grid-template-columns:.85fr 1.15fr;gap:44px;align-items:center;}
+  @media (max-width:900px){.promo{grid-template-columns:1fr;}}
+  .promo-media{border-radius:var(--radius-lg);overflow:hidden;height:420px;}
+  .promo-media img{width:100%;height:100%;object-fit:cover;}
+  .promo-copy h2{font-size:34px;line-height:1.2;text-transform:uppercase;}
+  .promo-copy .lede{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px;}
+  .promo-copy .lede p{font-size:13.5px;color:var(--ink-soft);}
+  .promo-tag{
+    margin-top:30px;display:flex;align-items:center;gap:44px;flex-wrap:wrap;
+    background:var(--sky-soft);border-radius:var(--radius-md);padding:20px 26px;
+  }
+  .promo-tag .off{font-family:'Poppins',sans-serif;font-weight:800;font-size:26px;color:var(--blue);}
+  .promo-tag .off-note{font-size:12.5px;color:var(--ink-soft);margin-top:2px;}
+  .promo-tag .btn-primary{margin-left:auto;}
+  @media (max-width:520px){.promo-tag .btn-primary{margin-left:0;}}
+
+  /* ---------- BOOKING ---------- */
+  .booking-section{background:var(--blue-ink);border-radius:var(--radius-lg);padding:52px;color:#fff;}
+  .booking-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:44px;}
+  @media (max-width:900px){.booking-grid{grid-template-columns:1fr;} .booking-section{padding:32px 22px;}}
+  .booking-copy h2{color:#fff;font-size:28px;}
+  .booking-copy p{color:#C7D2E8;font-size:14.5px;margin-top:12px;max-width:360px;}
+  .booking-copy ul{list-style:none;padding:0;margin:26px 0 0;display:flex;flex-direction:column;gap:14px;}
+  .booking-copy li{display:flex;gap:10px;font-size:14px;color:#DCE5F7;}
+  .booking-copy li .ic{color:#78A6FF;}
+
+  form.card{
+    background:var(--paper);border-radius:var(--radius-md);padding:28px;color:var(--ink);
+  }
+  .form-row{margin-bottom:16px;}
+  .form-row label{display:block;font-size:13.5px;font-weight:700;margin-bottom:6px;color:var(--blue-ink);}
+  .form-row input, .form-row select, .form-row textarea{
+    width:100%;padding:11px 13px;border-radius:var(--radius-sm);border:1px solid var(--line);
+    font-family:'Noto Sans Thai',sans-serif;font-size:14.5px;background:var(--sky-soft);color:var(--ink);
+  }
+  .form-row input:focus, .form-row select:focus, .form-row textarea:focus{
+    outline:2px solid var(--blue);outline-offset:1px;border-color:var(--blue);
+  }
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  @media (max-width:480px){.two-col{grid-template-columns:1fr;}}
+  .form-actions{display:flex;gap:12px;margin-top:8px;}
+  .form-actions button{flex:1;}
+  .btn-cancel{background:#fff;color:var(--blue-deep);border:1.5px solid var(--blue);}
+  .btn-cancel:hover{background:var(--sky);}
+  .form-msg{font-size:13px;margin-top:10px;min-height:18px;font-weight:600;}
+  .form-msg.ok{color:#2E7D4F;}
+  .form-msg.err{color:#C0392B;}
+  .btn-primary[disabled]{opacity:.6;cursor:not-allowed;transform:none;}
+
+  /* ---------- MY BOOKINGS (ticket style) ---------- */
+  .ticket-list{display:flex;flex-direction:column;gap:20px;}
+  .ticket{
+    position:relative;background:var(--paper);border-radius:var(--radius-md);
+    display:grid;grid-template-columns:1fr auto;overflow:hidden;
+    box-shadow:0 10px 24px rgba(14,27,51,.07);border:1px solid var(--line);
+  }
+  .ticket-main{padding:22px 26px;}
+  .ticket-main .route{font-family:'Poppins',sans-serif;font-size:18px;font-weight:700;color:var(--blue-ink);}
+  .ticket-main .meta{display:flex;flex-wrap:wrap;gap:18px;margin-top:12px;font-size:13.5px;color:var(--ink-soft);}
+  .ticket-main .meta b{color:var(--ink);font-weight:600;}
+  .ticket-stub{
+    position:relative;width:150px;background:var(--blue);color:#fff;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;
+    padding:16px;text-align:center;
+  }
+  .ticket-stub::before{
+    content:"";position:absolute;left:-8px;top:50%;transform:translateY(-50%);
+    width:16px;height:16px;background:var(--paper);border-radius:50%;
+  }
+  .ticket-stub .stamp{
+    border:2px solid #fff;color:#fff;border-radius:50%;
+    width:52px;height:52px;display:flex;align-items:center;justify-content:center;
+    font-size:10.5px;font-weight:700;transform:rotate(-14deg);letter-spacing:.03em;
+    font-family:'Poppins',sans-serif;
+  }
+  .ticket-stub small{font-size:11px;opacity:.85;}
+  .perf{
+    position:absolute;left:150px;top:0;bottom:0;width:0;
+    border-left:2px dashed rgba(14,27,51,.15);
+  }
+  @media (max-width:600px){
+    .ticket{grid-template-columns:1fr;}
+    .ticket-stub{width:100%;flex-direction:row;justify-content:center;padding:12px;}
+    .perf{display:none;}
+  }
+
+  footer{padding:44px 24px 60px;text-align:center;color:var(--ink-soft);font-size:13.5px;}
+  footer strong{color:var(--blue-ink);}
+</style>
+</head>
+<body>
+  
+
+<nav class="nav">
+  <div class="logo"><span class="mark">日</span> Japan Tours</div>
+  <div class="nav-links">
+    <a href="#destinations">จุดหมาย</a>
+    <a href="#tours">ทัวร์ทั้งหมด</a>
+    <a href="#steps">วิธีจอง</a>
+    <a href="#booking">จองทัวร์</a>
+    <a href="#mybookings">การจองของฉัน</a>
+  </div>
+  <a href="#booking" class="nav-cta">จองทันที</a>
+</nav>
+
+<div class="hero-shell">
+  <section class="hero">
+    <div>
+      <div class="eyebrow" style="color:#9CC0FF">เดินทางสู่แดนอาทิตย์อุทัย</div>
+      <h1>ค้นพบเสน่ห์ญี่ปุ่น<br>ในทริปเดียว!</h1>
+      <p>เลือกทัวร์ที่ใช่ กรอกข้อมูลไม่กี่บรรทัด แล้วให้เราจัดการที่เหลือ ตั้งแต่โตเกียวสุดทันสมัยไปจนถึงภูเขาไฟฟูจิอันงดงาม</p>
+      <div class="hero-ctas">
+        <a href="#booking" class="btn btn-primary">จองทริปตอนนี้</a>
+        <span class="play-dot">▶</span>
+      </div>
+    </div>
+    <div></div>
+
+    <div class="hero-know">
+      <span>ดูข้อมูลเพิ่มเติม</span> <span>→</span>
+    </div>
+    <div class="hero-float">
+      <div class="thumbs">
+        <img src="https://images.unsplash.com/photo-1765707886539-6d57024ddc2f?auto=format&fit=crop&w=100&q=70" alt="Fuji">
+        <img src="https://images.unsplash.com/photo-1449509054340-b0c11c014a2a?auto=format&fit=crop&w=100&q=70" alt="Kyoto">
+        <img src="https://images.unsplash.com/photo-1741684650296-19f452c8814f?auto=format&fit=crop&w=100&q=70" alt="Tokyo">
+      </div>
+      <div>
+        <strong>ทัวร์แนะนำ</strong>
+        <span>ค้นพบญี่ปุ่นทีละที่ · เริ่มต้น 12,000 บาท</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="trust-row">
+    <div class="follow">
+      ติดตามเรา
+      <div class="dots"><span>𝕏</span><span>f</span><span>◎</span></div>
+    </div>
+    <div class="partners">
+      <span>JR PASS</span>
+      <span>JNTO</span>
+      <span>Klook</span>
+      <span>Trip.com</span>
+      <span>Booking.com</span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <section class="section" id="destinations">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">จุดหมายแนะนำ</div>
+        <h2>จุดหมายยอดนิยม</h2>
+        <p>คัดสรรจุดหมายที่นักเดินทางชื่นชอบที่สุดในญี่ปุ่น</p>
+      </div>
+      <div class="arrow-nav"><button>‹</button><button class="active">›</button></div>
+    </div>
+    <div class="dest-grid">
+      <div class="dest-card">
+        <div class="dest-media"><img src="https://images.unsplash.com/photo-1765707886539-6d57024ddc2f?auto=format&fit=crop&w=800&q=80" alt="ภูเขาไฟฟูจิ"></div>
+        <div class="dest-info">
+          <div><h4>ภูเขาไฟฟูจิ</h4><div class="loc">📍 ยามานาชิ, ญี่ปุ่น</div></div>
+          <span class="rating-pill">★ 4.9</span>
+        </div>
+      </div>
+      <div class="dest-card">
+        <div class="dest-media"><img src="https://images.unsplash.com/photo-1449509054340-b0c11c014a2a?auto=format&fit=crop&w=800&q=80" alt="ศาลเจ้าฟูชิมิ อินาริ เกียวโต"></div>
+        <div class="dest-info">
+          <div><h4>ศาลเจ้าฟูชิมิ อินาริ</h4><div class="loc">📍 เกียวโต, ญี่ปุ่น</div></div>
+          <span class="rating-pill">★ 4.8</span>
+        </div>
+      </div>
+      <div class="dest-card">
+        <div class="dest-media"><img src="https://images.unsplash.com/photo-1741684650296-19f452c8814f?auto=format&fit=crop&w=800&q=80" alt="ชิบูย่า โตเกียว"></div>
+        <div class="dest-info">
+          <div><h4>ชิบูย่า ครอสซิ่ง</h4><div class="loc">📍 โตเกียว, ญี่ปุ่น</div></div>
+          <span class="rating-pill">★ 4.7</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="tours">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">ทัวร์แนะนำ</div>
+        <h2>ทัวร์ยอดนิยม</h2>
+        <p>อัปเดตที่นั่งว่างแบบเรียลไทม์จากระบบของเรา เลือกแล้วกดจองได้ทันที</p>
+      </div>
+    </div>
+    <div id="tourList" class="tour-grid">
+      <div class="empty-note">กำลังโหลดข้อมูลทัวร์...</div>
+    </div>
+  </section>
+
+  <section class="section" id="steps">
+    <div class="journey-head">
+      <div class="eyebrow">ขั้นตอนง่ายๆ</div>
+      <h2>จองง่ายใน 3 ขั้นตอน</h2>
+      <p>เดินทางสู่ญี่ปุ่นแบบไม่มีสะดุด ตั้งแต่เลือกทัวร์จนถึงยืนยันการจอง</p>
+    </div>
+    <div class="journey-grid">
+      <div class="journey-side">
+        <div class="ic">①</div>
+        <h4>เลือกทัวร์</h4>
+        <p style="font-size:13.5px;color:var(--ink-soft);">เลือกจุดหมายและวันเดินทางที่ใช่สำหรับคุณจากรายการทัวร์ยอดนิยม</p>
+      </div>
+      <div class="journey-card">
+        <div class="ic">②</div>
+        <h4>กรอกข้อมูลผู้จอง</h4>
+        <p>กรอกชื่อ อีเมล เบอร์โทร และจำนวนผู้เดินทางในแบบฟอร์มด้านล่าง ใช้เวลาไม่ถึงนาที</p>
+        <a href="#booking" class="learn">จองทัวร์เลย →</a>
+      </div>
+      <div class="journey-side">
+        <div class="ic">③</div>
+        <h4>ยืนยันการจอง</h4>
+        <p style="font-size:13.5px;color:var(--ink-soft);">ระบบบันทึกการจองทันที และแสดงผลในรายการ "การจองของฉัน"</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="promo">
+      <div class="promo-media">
+        <img src="https://images.unsplash.com/photo-1761141954458-70e87a4a8943?auto=format&fit=crop&w=900&q=80" alt="ซากุระและเจดีย์ในเกียวโต">
+      </div>
+      <div class="promo-copy">
+        <div class="eyebrow">โปรโมชั่นพิเศษ</div>
+        <h2>เที่ยวญี่ปุ่น<br>แบบไม่มีสะดุด</h2>
+        <div class="lede">
+          <p>การเดินทางคือหนทางที่ดีที่สุดในการค้นพบสถานที่ใหม่ๆ เรียนรู้วัฒนธรรมที่แตกต่าง</p>
+          <p>และเก็บเกี่ยวประสบการณ์อันมีค่าที่หาไม่ได้จากที่ไหน ไปกับทีมงานคนไทยตลอดทริป</p>
+        </div>
+        <div class="promo-tag">
+          <div>
+            <div class="off">ลด 20%</div>
+            <div class="off-note">ทัวร์ฤดูซากุระ · ถึง 28 กันยายนนี้</div>
+          </div>
+          <a href="#booking" class="btn btn-primary">จองทริปตอนนี้ →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="booking">
+    <div class="booking-section">
+      <div class="booking-grid">
+        <div class="booking-copy">
+          <div class="eyebrow" style="color:#9CC0FF">จองทัวร์</div>
+          <h2>พร้อมออกเดินทางหรือยัง?</h2>
+          <p>กรอกแบบฟอร์มด้านขวา ระบบจะบันทึกการจองของคุณไว้ทันที และสามารถตรวจสอบสถานะได้ในส่วน "การจองของฉัน"</p>
+          <ul>
+            <li><span class="ic">●</span> ไม่มีค่าธรรมเนียมแอบแฝง</li>
+            <li><span class="ic">●</span> แก้ไขจำนวนผู้เดินทางได้ภายหลัง</li>
+            <li><span class="ic">●</span> ทีมงานติดต่อกลับภายใน 24 ชม.</li>
+          </ul>
+        </div>
+
+        <form id="bookingForm" class="card">
+          <div class="form-row">
+            <label for="tourSelect">เลือกทัวร์</label>
+            <select id="tourSelect" required>
+              <option value="">-- กรุณาเลือกทัวร์ --</option>
+            </select>
+          </div>
+
+          <div class="two-col">
+            <div class="form-row">
+              <label for="name">ชื่อผู้จอง</label>
+              <input type="text" id="name" required />
+            </div>
+            <div class="form-row">
+              <label for="phone">โทรศัพท์</label>
+              <input type="text" id="phone" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <label for="email">อีเมล</label>
+            <input type="email" id="email" required />
+          </div>
+
+          <div class="two-col">
+            <div class="form-row">
+              <label for="people">จำนวนคน</label>
+              <input type="number" id="people" min="1" value="1" required />
+            </div>
+            <div class="form-row">
+              <label for="date">วันที่จอง</label>
+              <input type="date" id="date" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <label for="note">หมายเหตุ</label>
+            <textarea id="note" rows="3"></textarea>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary" id="submitBtn">ส่งการจอง</button>
+            <button type="reset" class="btn btn-cancel">ยกเลิก</button>
+          </div>
+          <div class="form-msg" id="formMsg"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="mybookings">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">สถานะการจอง</div>
+        <h2>การจองของฉัน</h2>
+      </div>
+    </div>
+    <div id="bookingList" class="ticket-list">
+      <div class="empty-note">ยังไม่มีการจอง</div>
+    </div>
+  </section>
+</div>
+
+<footer>
+  © 2026 <strong>Japan Tours</strong> — ทริปญี่ปุ่นที่ออกแบบมาเพื่อคุณ
+</footer>
+
+<script>
+  const API = "http://localhost:3000";
+  const bookingListEl = document.getElementById("bookingList");
+  const tourListEl = document.getElementById("tourList");
+  const tourSelect = document.getElementById("tourSelect");
+  const form = document.getElementById("bookingForm");
+  const submitBtn = document.getElementById("submitBtn");
+  const formMsg = document.getElementById("formMsg");
+
+  let toursCache = [];
+
+  function money(n){
+    return Number(n || 0).toLocaleString("th-TH");
+  }
+
+  // Fallback images (used when the API doesn't return t.image), matched by destination keyword
+  const FALLBACK_IMAGES = [
+    { match: /ฮอกไกโด|hokkaido/i, url: "https://images.unsplash.com/photo-1576829021150-ebc8b46b9fb9?auto=format&fit=crop&w=800&q=80" },
+    { match: /เกียวโต|kyoto/i,   url: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=800&q=80" },
+    { match: /โตเกียว|tokyo/i,   url: "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=800&q=80" },
+    { match: /โอซาก้า|osaka/i,   url: "https://images.unsplash.com/photo-1590559899731-a382839e5549?auto=format&fit=crop&w=800&q=80" }
+  ];
+  const DEFAULT_FALLBACK_IMAGE = "https://images.unsplash.com/photo-1528360983277-13d401cdc186?auto=format&fit=crop&w=800&q=80";
+
+  function getTourImage(t){
+    if (t.image) return t.image;
+    const found = FALLBACK_IMAGES.find(f => f.match.test(t.title || ""));
+    return found ? found.url : DEFAULT_FALLBACK_IMAGE;
+  }
+
+  // Static tour data — no API call needed, just pick from the list below.
+  const STATIC_TOURS = [
+    {
+      _id: "hokkaido-1",
+      title: "ทัวร์ฮอกไกโด",
+      description: "ชมหิมะฤดูหนาว",
+      price: 20000,
+      seats: 11,
+      image: "https://images.unsplash.com/photo-1576829021150-ebc8b46b9fb9?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      _id: "hokkaido-2",
+      title: "ทัวร์ฮอกไกโด",
+      description: "ชมหิมะฤดูหนาว",
+      price: 20000,
+      seats: 10,
+      image: "https://images.unsplash.com/photo-1576829021150-ebc8b46b9fb9?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      _id: "kyoto-1",
+      title: "ทัวร์เกียวโต",
+      description: "ชมวัดดัง",
+      price: 15000,
+      seats: 3,
+      image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      _id: "tokyo-1",
+      title: "ทัวร์โตเกียว",
+      description: "เที่ยวโตเกียว 3 วัน",
+      price: 12000,
+      seats: 10,
+      image: "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=800&q=80"
+    }
+  ];
+
+  async function loadTours(){
+    let tours = [];
+    try {
+      const res = await fetch(API + "/api/tours");
+      tours = await res.json();
+    } catch (err) {
+      console.log("ไม่สามารถโหลดทัวร์จาก API ได้:", err);
+      tourListEl.innerHTML = `<div class="empty-note">ไม่สามารถโหลดข้อมูลทัวร์ได้ กรุณาลองใหม่อีกครั้ง</div>`;
+      return;
+    }
+
+    toursCache = tours;
+
+    if (!tours.length) {
+      tourListEl.innerHTML = `<div class="empty-note">ยังไม่มีทัวร์ในระบบ</div>`;
+      tourSelect.innerHTML = '<option value="">-- กรุณาเลือกทัวร์ --</option>';
+      return;
+    }
+
+    tourSelect.disabled = false;
+    tourSelect.innerHTML = '<option value="">-- กรุณาเลือกทัวร์ --</option>' +
+      tours.map(t => `<option value="${t.id}">${t.title} — ${money(t.price)} บาท</option>`).join("");
+
+    tourListEl.innerHTML = tours.map(t => `
+      <div class="tour-card">
+        <div class="tour-media">
+          <img src="${getTourImage(t)}" alt="${t.title}" loading="lazy">
+          ${t.seats != null ? `<span class="tour-badge">เหลือ ${t.seats} ที่นั่ง</span>` : ""}
+        </div>
+        <div class="tour-body">
+          <h4>${t.title}</h4>
+          <p>${t.description || "ทริปพิเศษที่ออกแบบมาให้คุณได้สัมผัสญี่ปุ่นแบบใกล้ชิด"}</p>
+          <div class="tour-price">
+            <span class="amt">${money(t.price)} <small>บาท / ท่าน</small></span>
+            <button type="button" class="tour-select-btn" data-id="${t.id}">เลือกทัวร์นี้ →</button>
+          </div>
+        </div>
+      </div>
+    `).join("");
+
+    tourListEl.querySelectorAll(".tour-select-btn").forEach(btn=>{
+      btn.addEventListener("click", () => {
+        tourSelect.value = btn.dataset.id;
+        tourSelect.dispatchEvent(new Event("change", { bubbles: true }));
+        tourSelect.focus();
+        const bookingSection = document.getElementById("booking");
+        if (bookingSection) bookingSection.scrollIntoView({behavior:"smooth", block:"start"});
+      });
+    });
+  }
+
+  async function loadBookings(){
+    let bookings = [];
+    try {
+      const res = await fetch(API + "/api/bookings");
+      bookings = await res.json();
+    } catch (err) {
+      console.log("ไม่สามารถโหลดรายการจองได้:", err);
+      bookingListEl.innerHTML = `<div class="empty-note">ไม่สามารถโหลดรายการจองได้</div>`;
+      return;
+    }
+
+    if(!bookings.length){
+      bookingListEl.innerHTML = `<div class="empty-note">ยังไม่มีการจอง</div>`;
+      return;
+    }
+
+    bookingListEl.innerHTML = bookings.map(b => `
+      <div class="ticket">
+        <div class="perf"></div>
+        <div class="ticket-main">
+          <div class="route">${(b.tour && b.tour.title) || "ทัวร์ (ไม่ระบุ)"}</div>
+          <div class="meta">
+            <span><b>${b.name}</b></span>
+            <span>โทร ${b.phone}</span>
+            <span>${b.email}</span>
+            <span>${b.qty} คน</span>
+            <span>วันที่ ${b.dateBooked ? b.dateBooked.split("T")[0] : "-"}</span>
+            ${b.note ? `<span>หมายเหตุ: ${b.note}</span>` : ""}
+          </div>
+        </div>
+        <div class="ticket-stub">
+          <div class="stamp">CONFIRM</div>
+          <small>Booking</small>
+        </div>
+      </div>
+    `).join("");
+  }
+
+  form.addEventListener("submit", async e => {
+    e.preventDefault();
+    formMsg.textContent = "";
+    formMsg.className = "form-msg";
+
+    if(!tourSelect.value){
+      formMsg.textContent = "กรุณาเลือกทัวร์ก่อนส่งการจอง";
+      formMsg.classList.add("err");
+      return;
+    }
+
+    const data = {
+      tour: tourSelect.value,
+      name: document.getElementById("name").value,
+      email: document.getElementById("email").value,
+      phone: document.getElementById("phone").value,
+      qty: Number(document.getElementById("people").value),
+      dateBooked: document.getElementById("date").value,
+      note: document.getElementById("note").value
+    };
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = "กำลังส่ง...";
+
+    try {
+      const res = await fetch(API + "/api/bookings", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      });
+
+      if (!res.ok) {
+        const errBody = await res.json().catch(() => ({}));
+        throw new Error(errBody.error || "Booking failed");
+      }
+
+      form.reset();
+      formMsg.textContent = "จองสำเร็จแล้ว ✓";
+      formMsg.classList.add("ok");
+      loadTours();
+      loadBookings();
+    } catch(err) {
+      formMsg.textContent = "ส่งการจองไม่สำเร็จ กรุณาลองใหม่อีกครั้ง";
+      formMsg.classList.add("err");
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = "ส่งการจอง";
+    }
+  });
+
+  loadTours();
+  loadBookings();
+  
+</script>
+
+</body>
+</html>
